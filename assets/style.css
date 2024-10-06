@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Indie+Flower&display=swap');
+body{
+    font-family: "Fredoka", sans-serif;
+    font-optical-sizing: auto;
+    font-weight:400 - 700;
+    font-style: normal;
+    @apply bg-light overflow-x-hidden;
+}
+
+body::before{
+    content: '';
+    width: 50%;
+    max-width: 320px;
+    height: 300px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background:url('/bg-header.png')no-repeat right top ;
+    background-size: auto;
+    opacity: .3;
+    -moz-transform: scale(-1, 1);
+    -o-transform: scale(-1, 1);
+    -webkit-transform: scale(-1, 1);
+    transform: scale(-1, 1);
+}
+body::after{
+    content: '';
+    width: 50%;
+    max-width: 320px;
+    height: 300px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background:url('/bg-header.png')no-repeat right top ;
+    background-size: auto;
+    opacity: .3;
+    z-index: -2;
+}
+
+.font-indie {
+    font-family: "Indie Flower", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .btn{
+    @apply py-3 px-6 rounded-full bg-brand text-blue-50 ;
+  }
