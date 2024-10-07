@@ -50,7 +50,8 @@ export const useMenu = () => {
                             name: 'Cookware Set',
                             slug: 'cookware-set'
                         }
-                    ]
+                    ],
+                    image:'/img-app.png'
                 },
                 {
                     name: 'Feeding',
@@ -84,7 +85,8 @@ export const useMenu = () => {
                             name: 'Bottle Brush',
                             slug: 'bottle-brush',
                         },
-                    ]
+                    ],
+                    image:'https://www.babysafe.co.id/pic/teether_content_635.png'
                 },
                 {
                     name: 'Big Articles ',
@@ -98,11 +100,13 @@ export const useMenu = () => {
                             name: 'Feeding Chair',
                             slug: 'feeding-chair'
                         }
-                    ]
+                    ],
+                    image:'https://www.babysafe.co.id/pic/hc01c135_content_238.png',
                 },
                 {
                     name: 'Baby Carrier ',
-                    slug: 'baby-carrier '
+                    slug: 'baby-carrier ',
+                    image:'/img-menu.png'
                 },
                 {
                     name: 'Nursing',
@@ -116,7 +120,8 @@ export const useMenu = () => {
                             name: 'Breast Pump',
                             slug: 'breast-pump'
                         }
-                    ]
+                    ],
+                    image:'/img-nursing.png'
                 },
                 {
                     name: 'Hygiene',
@@ -142,7 +147,8 @@ export const useMenu = () => {
                             name: 'Nasal Aspirator',
                             slug: 'nasal-aspirator'
                         }
-                    ]
+                    ],
+                    image:'https://www.babysafe.co.id/pic/no_bg_hires_content_502.png'
                 }
             ]
         }

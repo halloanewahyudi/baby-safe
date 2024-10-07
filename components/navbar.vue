@@ -39,6 +39,14 @@ const debounce = (func, delay) => {
 const onSearchInput = debounce(() => {
     filteredProducts.value // This will trigger reactivity
 }, 300)
+
+const active = ref(null)
+const menuActive = (index) => {
+    selected.value = index
+    active[index].value = 'active'
+    console.log(selected.value, active.value)
+}
+
 </script>
 <template>
     <div class="navbar relative my-3 pt-7">
@@ -48,8 +56,9 @@ const onSearchInput = debounce(() => {
                     <div class="logo h-[50px] shrink-0">
                         <img src="public/logo.png" alt="" class="h-full">
                     </div>
-                    <button class="text-2xl" @click="openCategory = !openCategory">
-                        <IconMenu />
+                    <button class=" flex gap-2 items-center" @click="openCategory = !openCategory">
+                        <IconMenu class="text-2xl" />
+                        <span class="hidden lg:block"> Products</span>
                     </button>
 
                     <div
@@ -86,8 +95,11 @@ const onSearchInput = debounce(() => {
                     <div class="grid grid-cols-1 lg:grid-cols-4 gap-5 lg:gap-10">
                         <div class="max-w-max">
                             <ul class="flex flex-col gap-4 font-medium text-brand">
-                                <li v-for="(item, index) in menu[1].category">
-                                    <NuxtLink to="/" @click="selected = index"> {{ item.name }}</NuxtLink>
+                                <li v-for="(item, index) in menu[1].category" :key="index">
+                                    <NuxtLink to="/" @click="menuActive(index)"  class="navlink "> {{ item.name }}</NuxtLink>
+                                    <ul v-if="item[index]">
+                                        <li v-for="menu in item.child" :key="menu">  <NuxtLink to=""> {{ menu.name }}</NuxtLink></li>
+                                    </ul>
                                 </li>
                             </ul>
                         </div>
@@ -98,8 +110,13 @@ const onSearchInput = debounce(() => {
                                 </li>
                             </ul>
                         </div>
-                        <div class="lg:col-span-2">
-
+                        <div class="lg:col-span-2 flex flex-col justify-center items-end bg-gradient-to-r from-white to-blue-200 rounded-r-xl pr-6">
+                            <div v-if="menu[1].category[selected]">
+                                <img :src="menu[1].category[selected].image" alt="" class="max-w-[200px] h-[200px]  object-contain object-center ">
+                            </div>
+                            <div v-else class="self-end w-full">
+                                <img src="https://www.babysafe.co.id/pic/bannerbottle_revisi4_content_312.jpg" alt="" class="w-full h-auto object-contain object-right ">
+                            </div>
                         </div>
                     </div>
 
@@ -123,6 +140,13 @@ const onSearchInput = debounce(() => {
         content: '';
         @apply w-4 opacity-100 duration-300
     }
+}
+.navlink{
+    @apply flex gap-2 items-center;
+}
+.navlink:focus::after{
+   content: '';
+   @apply w-3 h-3 bg-red-500 block rounded-full;
 }
 
 .v-enter-active,
