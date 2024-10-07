@@ -97,9 +97,6 @@ const menuActive = (index) => {
                             <ul class="flex flex-col gap-4 font-medium text-brand">
                                 <li v-for="(item, index) in menu[1].category" :key="index">
                                     <NuxtLink to="/" @click="menuActive(index)"  class="navlink "> {{ item.name }}</NuxtLink>
-                                    <ul v-if="item[index]">
-                                        <li v-for="menu in item.child" :key="menu">  <NuxtLink to=""> {{ menu.name }}</NuxtLink></li>
-                                    </ul>
                                 </li>
                             </ul>
                         </div>
@@ -110,12 +107,12 @@ const menuActive = (index) => {
                                 </li>
                             </ul>
                         </div>
-                        <div class="lg:col-span-2 flex flex-col justify-center items-end bg-gradient-to-r from-white to-blue-200 rounded-r-xl pr-6">
-                            <div v-if="menu[1].category[selected]">
+                        <div v-else class="lg:col-span-3 flex flex-col justify-end items-end">
+                            <img src="https://www.babysafe.co.id/pic/bannerbottle_revisi4_content_312.jpg" alt="" class="w-full h-auto rounded-xl  object-contain object-top ">
+                        </div>
+                        <div class="lg:col-span-2 flex flex-col  items-end  rounded-r-xl ">
+                            <div v-if="menu[1].category[selected]" class="bg-gradient-to-r from-white to-blue-200 h-full w-full flex flex-col justify-center items-end rounded-xl px-6" >
                                 <img :src="menu[1].category[selected].image" alt="" class="max-w-[200px] h-[200px]  object-contain object-center ">
-                            </div>
-                            <div v-else class="self-end w-full">
-                                <img src="https://www.babysafe.co.id/pic/bannerbottle_revisi4_content_312.jpg" alt="" class="w-full h-auto object-contain object-right ">
                             </div>
                         </div>
                     </div>
@@ -126,21 +123,7 @@ const menuActive = (index) => {
     </div>
 </template>
 <style scoped>
-.link-menu {
-    position: relative;
 
-    &::after {
-        content: '';
-        @apply w-1 h-1 rounded-full bg-red-600 absolute right-0 left-0 mx-auto opacity-0;
-    }
-}
-
-.link-menu:hover {
-    &::after {
-        content: '';
-        @apply w-4 opacity-100 duration-300
-    }
-}
 .navlink{
     @apply flex gap-2 items-center;
 }
